@@ -11,8 +11,6 @@ public class ExplorerItem {
     private String absolutePath;
     private List<ExplorerItem> children; // Subitems for folders
 
-    // Constructors, getters, and setters
-
     public ExplorerItem(String name, String type) {
         this.name = name;
         this.type = type;

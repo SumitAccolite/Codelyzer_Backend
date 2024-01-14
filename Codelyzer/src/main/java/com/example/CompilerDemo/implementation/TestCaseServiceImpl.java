@@ -1,8 +1,9 @@
-package com.example.CompilerDemo.services;
+package com.example.CompilerDemo.implementation;
 
 import com.example.CompilerDemo.entity.TestCase;
 import com.example.CompilerDemo.dto.TestCaseDTO;
 import com.example.CompilerDemo.repository.TestCaseRepository;
+import com.example.CompilerDemo.services.TestCaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

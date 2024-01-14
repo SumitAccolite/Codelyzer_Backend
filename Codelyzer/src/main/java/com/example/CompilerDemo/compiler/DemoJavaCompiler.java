@@ -1,4 +1,4 @@
-package com.example.CompilerDemo.services;
+package com.example.CompilerDemo.compiler;
 
 import javax.tools.*;
 import java.io.*;
@@ -11,29 +11,33 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DemoJavaCompiler {
-    public boolean compile(String javaCode) {
+    public CompilationResult compile(String javaCode) {
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-
         if (compiler == null) {
-            return false;
+            return new CompilationResult(false,"No System Java Compiler Available");
         }
 
         String generatedClassName = extractClassName(javaCode);
-        if(!generatedClassName.equals("Not Found")) {
+        if(!generatedClassName.equals("0")) {
             // Create a compilation task
-            JavaCompiler.CompilationTask task = compiler.getTask(null, null, null, null, null, Arrays.asList(new JavaSourceFromString(generatedClassName, javaCode)));
+            DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
+            JavaCompiler.CompilationTask task = compiler.getTask(null, null, diagnostics, null, null, Arrays.asList(new JavaSourceFromString(generatedClassName, javaCode)));
 
             // Perform the compilation
             boolean compilationSuccess = task.call();
 
             if (compilationSuccess) {
-                return true;
+                return new CompilationResult(true, null);
                 // Run the compiled class
             } else {
-                return false;
+                StringBuilder errorDetails = new StringBuilder();
+                for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {
+                    errorDetails.append(diagnostic.getMessage(null)).append("\n");
+                }
+                return new CompilationResult(false, errorDetails.toString());
             }
         }
-        return false;
+        return new CompilationResult(false, "Class name not found in the provided Java code.");
     }
 
     public String runCompiledClass(String className, String[] input) {
@@ -91,8 +95,7 @@ public class DemoJavaCompiler {
         if (matcher.find()) {
             return matcher.group(1);
         } else {
-            return "Not Found";
+            return "0";
         }
     }
 }
-
