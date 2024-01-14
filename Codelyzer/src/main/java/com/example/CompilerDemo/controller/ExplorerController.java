@@ -16,11 +16,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200")
 public class ExplorerController {
-    private static final String BASE_DIRECTORY = "C:\\Codelyser\\github\\Codelyzer_Backend\\Codelyzer";
+    private static final String BASE_DIRECTORY = "C:\\Codelyser\\github\\Codelyzer_Backend\\Codelyzer\\src";
     @GetMapping("/explorer")
     public ResponseEntity<List<ExplorerItem>> getExplorerData() {
         // Replace this with the path to your local directory
-        String directoryPath = "C:\\Codelyser\\github\\Codelyzer_Backend\\Codelyzer";
+        String directoryPath = "C:\\Codelyser\\github\\Codelyzer_Backend\\Codelyzer\\src";
 
         List<ExplorerItem> explorerData = fetchDataFromDirectory(new File(directoryPath));
         return ResponseEntity.ok(explorerData);
