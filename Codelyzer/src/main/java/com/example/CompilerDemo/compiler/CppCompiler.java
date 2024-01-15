@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
-public class DemoCppCompiler {
+public class CppCompiler {
 
     public String writeCodeToTempFile(String code, String fileName, String fileExtension) throws IOException {
         // Define the file path for the temporary file
@@ -23,6 +23,7 @@ public class DemoCppCompiler {
         }
         return file.toString();
     }
+
     public CompilationResult compileCpp(String code) throws IOException, InterruptedException {
         // Write the C++ code to a temporary file
         String filePath = writeCodeToTempFile(code, "Temp", ".cpp");
