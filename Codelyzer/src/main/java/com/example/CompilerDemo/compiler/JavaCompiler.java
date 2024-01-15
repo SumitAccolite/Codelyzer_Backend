@@ -10,9 +10,9 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DemoJavaCompiler {
+public class JavaCompiler {
     public CompilationResult compile(String javaCode) {
-        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+        javax.tools.JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
         if (compiler == null) {
             return new CompilationResult(false,"No System Java Compiler Available");
         }
@@ -21,7 +21,7 @@ public class DemoJavaCompiler {
         if(!generatedClassName.equals("0")) {
             // Create a compilation task
             DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
-            JavaCompiler.CompilationTask task = compiler.getTask(null, null, diagnostics, null, null, Arrays.asList(new JavaSourceFromString(generatedClassName, javaCode)));
+            javax.tools.JavaCompiler.CompilationTask task = compiler.getTask(null, null, diagnostics, null, null, Arrays.asList(new JavaSourceFromString(generatedClassName, javaCode)));
 
             // Perform the compilation
             boolean compilationSuccess = task.call();

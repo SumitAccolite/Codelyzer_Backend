@@ -4,8 +4,8 @@ import com.example.CompilerDemo.compiler.CompilationResult;
 import com.example.CompilerDemo.entity.TestCase;
 import com.example.CompilerDemo.dto.SubmittedDTO;
 import com.example.CompilerDemo.dto.TestCaseDTO;
-import com.example.CompilerDemo.compiler.DemoCppCompiler;
-import com.example.CompilerDemo.compiler.DemoJavaCompiler;
+import com.example.CompilerDemo.compiler.CppCompiler;
+import com.example.CompilerDemo.compiler.JavaCompiler;
 import com.example.CompilerDemo.services.SubmittedService;
 import com.example.CompilerDemo.services.TestCaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class SubmittedServiceImpl implements SubmittedService {
     public List<String> submitCode(SubmittedDTO code) throws IOException, InterruptedException {
         results.clear();
         if (code.getLanguage().equals("java")) {
-            DemoJavaCompiler compiler = new DemoJavaCompiler();
+            JavaCompiler compiler = new JavaCompiler();
             CompilationResult compilationResult = compiler.compile(code.getSubmittedCode());
 
             //checking if the code runs without compilation error
@@ -54,7 +54,7 @@ public class SubmittedServiceImpl implements SubmittedService {
         }
         // cpp compiler
         else {
-            DemoCppCompiler cppCompiler = new DemoCppCompiler();
+            CppCompiler cppCompiler = new CppCompiler();
             CompilationResult compilationResult = cppCompiler.compileCpp(code.getSubmittedCode());
             if (compilationResult.isSuccess()) {
                 results.add("Compilation Successful");

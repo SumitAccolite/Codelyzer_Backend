@@ -1,7 +1,6 @@
 package com.example.CompilerDemo.entity;
 
 import jakarta.persistence.*;
-import jdk.jfr.Registered;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

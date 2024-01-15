@@ -1,7 +1,6 @@
 package com.example.CompilerDemo.explorer;
 
 import lombok.Data;
-
 import java.util.List;
 
 @Data
@@ -32,5 +31,4 @@ public class ExplorerItem {
         this.absolutePath=path;
         this.children = children;
     }
-
 }
