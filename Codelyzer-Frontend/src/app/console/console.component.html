@@ -1,0 +1,66 @@
+<!-- component-navbar.component.html -->
+<div class="navbar-container">
+    <div class="tabs-container" >
+      <mat-tab-group style="flex-grow: 0;">
+        <mat-tab label="TestCases">
+          <ng-template matTabContent>
+
+            <!-- <div class="tab-content" style="color: black;">
+                <div *ngFor="let testCase of testcases">{{ testCase }}</div>
+            </div> -->
+
+
+            <!-- <div style="color: black;" *ngFor="let index of testcases; let i = index">
+                <span *ngIf="matched[i]; else cross">&#10003;</span>
+                <ng-template #cross>&times;</ng-template>
+                {{ testcases[i] }}
+              </div> -->
+
+
+              <div class="tab-content">
+                <div *ngFor="let index of testcases; let i = index" class="testcase-item" [ngStyle]="{'color': matched[i] ? 'green' : 'red'}">
+                  <mat-icon  class="icon tick" *ngIf="matched[i]">check</mat-icon>
+                  <mat-icon class="icon cross" *ngIf="!matched[i]">clear</mat-icon>
+                  {{ testcases[i] }}
+                </div>
+              </div>
+              
+
+
+          </ng-template>
+        </mat-tab>
+
+
+        <!-- <mat-tab label="Custom Inputs">
+          <ng-template matTabContent>
+            <div class="tab-content">
+              <p style="color: black;">This is the content for the Custom Inputs tab.</p>
+            </div>
+          </ng-template>
+        </mat-tab> -->
+
+        <mat-tab label="Custom Inputs">
+            <ng-template matTabContent>
+              <div class="custom-inputs-content">
+                <textarea [(ngModel)]="customInput" placeholder="Enter custom input"></textarea>
+                <button class="runCustomTestcase" mat-raised-button color="primary" (click)="runCustomTestcase()">Run Custom Testcase</button>
+                <div class="output-section">
+                  <p>Output: {{ customOutput }}</p>
+                </div>
+              </div>
+            </ng-template>
+          </mat-tab>
+
+
+
+        
+      </mat-tab-group>
+    </div>
+
+    <div class="button-container">
+        <button mat-raised-button color="primary">Run Code</button>
+        <button mat-raised-button style="background-color: green; color: white;">Submit</button>
+    </div>
+  </div>
+  
+
