@@ -12,6 +12,7 @@
 //-------------------------------------------
 
 import { Component, HostListener } from '@angular/core';
+import { Question } from './question.model';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,11 @@ export class AppComponent {
   leftWidth = 200; // Initial width for the left div
   rightWidth = 1000;
   resizing = false;
+  selectedQuestion!: Question;
+  onQuestionSelected(question: Question): void {
+    this.selectedQuestion = question;
+  }
+
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: MouseEvent): void {
     if (this.resizing) {

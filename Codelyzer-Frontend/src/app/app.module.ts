@@ -20,6 +20,7 @@ import { MonacoEditorComponent } from './monaco-editor/monaco-editor.component';
 import { FormsModule } from '@angular/forms';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { ConsoleComponent } from './console/console.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { ConsoleComponent } from './console/console.component';
     MatTabsModule,
     MatIconModule,
 
-    FormsModule
+    FormsModule,
+    HttpClientModule
     
   ],
   providers: [

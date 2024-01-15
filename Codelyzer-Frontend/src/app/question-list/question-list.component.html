@@ -1,7 +1,6 @@
 <mat-button-toggle-group #group="matButtonToggleGroup">
-    <mat-button-toggle *ngFor="let question of questions" [value]="question">
-      {{ question }}
+    <mat-button-toggle *ngFor="let question of questions; let i = index" [value]="question" (click)="onQuestionSelected(question)">
+      Question {{ i+1 }}
     </mat-button-toggle>
 </mat-button-toggle-group>
-
 

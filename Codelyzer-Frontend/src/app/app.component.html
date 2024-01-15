@@ -20,16 +20,30 @@
 <div>
     <div mode="side" opened>
         <app-header></app-header>
-        
     </div> 
-    <app-question-list></app-question-list>
+    <app-question-list (questionSelected)="onQuestionSelected($event)"></app-question-list>
 
     <div class="parent">
-        <div class="left" [ngStyle]="{ 'width.px': leftWidth }">
+        <div class="left" >
+            <mat-tab-group>
+                <mat-tab style="color: white;" label="Description">
+                    <div *ngIf="selectedQuestion" >
+                        <h2>{{selectedQuestion.title}}</h2>
+                        {{ selectedQuestion.description }}
+                    </div>
+                </mat-tab>
+                <mat-tab style="color: white;" label="Explorer">
+                    <!-- Content for the "Explorer" tab -->
+                    <!-- Add your content here -->
+                </mat-tab>
+            </mat-tab-group>
         </div>
-        <div class="splitter" (mousedown)="startResizing($event)">
+        
+        
+        <!-- <div class="splitter" (mousedown)="startResizing($event)">
             <i class="far fa-arrows-h"></i>        
-        </div>
+        </div> -->
+
         <div class="right" [ngStyle]="{ 'width.px': rightWidth }">
             <app-monaco-editor></app-monaco-editor>
             <app-console></app-console>
