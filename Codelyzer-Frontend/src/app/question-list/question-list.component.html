@@ -1,0 +1,7 @@
+<mat-button-toggle-group #group="matButtonToggleGroup">
+    <mat-button-toggle *ngFor="let question of questions" [value]="question">
+      {{ question }}
+    </mat-button-toggle>
+</mat-button-toggle-group>
+
+

@@ -1,0 +1,38 @@
+<!-- <div>
+    <div mode="side" opened>
+        <app-header></app-header>
+    </div>
+    <app-question-list></app-question-list>
+
+    <div class="parent">
+        <div class="left">
+        </div>
+        <div class="right">
+            <app-monaco-editor></app-monaco-editor>
+            <div class="console">
+                
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div>
+    <div mode="side" opened>
+        <app-header></app-header>
+        
+    </div> 
+    <app-question-list></app-question-list>
+
+    <div class="parent">
+        <div class="left" [ngStyle]="{ 'width.px': leftWidth }">
+        </div>
+        <div class="splitter" (mousedown)="startResizing($event)">
+            <i class="far fa-arrows-h"></i>        
+        </div>
+        <div class="right" [ngStyle]="{ 'width.px': rightWidth }">
+            <app-monaco-editor></app-monaco-editor>
+            <app-console></app-console>
+        </div>
+    </div>
+</div>

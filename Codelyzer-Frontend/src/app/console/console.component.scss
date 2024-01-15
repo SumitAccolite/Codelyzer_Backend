@@ -1,0 +1,50 @@
+
+.mat-mdc-tab-label-container{
+    flex-grow: 0;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff; /* Dark background color */
+    color: white; /* Text color */
+    padding: 10px; /* Add some padding for better appearance */
+  }
+  
+  .tabs-container {
+    width: 75%;
+    flex-grow: 0;
+    // flex-grow: 1;
+    // display: flex;
+  }
+  
+  .tab-content {
+    width: 100%; /* Make the tab content take the entire width */
+  }
+  
+  .button-container {
+    width: 25%;
+    display: flex;
+    gap: 16px;
+    margin-left: 8%;
+  }
+
+.custom-inputs-content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  textarea {
+    height: 100px; /* Set the desired height for the textarea */
+    margin-bottom: 10px; /* Add some spacing between textarea and button */
+    resize: none;
+}
+  runCustomTestcase {
+    align-self: flex-start; /* Align the button to the start (left) */
+  }
+  .output-section {
+    margin-top: 20px; /* Add some spacing above the output section */
+    color: #333; /* Set the color for the output text */
+  }
+
+
