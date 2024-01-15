@@ -1,3 +1,4 @@
+
 package com.example.CompilerDemo.entity;
 
 import jakarta.persistence.*;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
+//TestCase Entity
 public class TestCase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
