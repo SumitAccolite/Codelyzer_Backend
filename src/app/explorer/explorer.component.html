@@ -1,0 +1,23 @@
+<!-- explorer.component.html -->
+
+<ul>
+  <li *ngFor="let item of explorerData">
+    <span (click)="handleItemClick(item)">
+      {{ item.name }} ({{ item.type }})
+    </span>
+    <app-explorer
+      *ngIf="item.type === 'folder' && item.expanded"
+      [explorerData]="item.children"
+      (fileClick)="handleFileClick($event)"
+    ></app-explorer>
+  </li>
+</ul>
+
+<app-monaco-editor
+  *ngIf="selectedFileContent && selectedFileContent !== ''"
+  [language]="'plaintext'"
+  [content]="selectedFileContent"
+  style="width: 100%; max-width: 800px;"
+></app-monaco-editor>
+
+<button (click)="createNewFile()">Create New File</button>

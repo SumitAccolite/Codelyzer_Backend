@@ -1,0 +1,15 @@
+<h1>Local Explorer</h1>
+<div class="explorer-container">
+  <app-explorer
+    [explorerData]="explorerData"
+    (folderClick)="handleFolderClick($event)"
+    (fileClick)="handleFileClick($event)"
+  ></app-explorer>
+  <!-- <app-file-viewer
+    *ngIf="selectedFileContent"
+    [fileContent]="selectedFileContent"
+  ></app-file-viewer> -->
+  <!-- <app-file-viewer [fileContent]="selectedFileContent"></app-file-viewer> -->
+
+</div>
+<app-monaco-editor></app-monaco-editor>
