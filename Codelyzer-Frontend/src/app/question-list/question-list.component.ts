@@ -1,4 +1,7 @@
-import { Component , Input} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Question } from '../question.model';
+import { QuestionServiceService } from '../question-service.service';
+import { error, log } from 'console';
 
 @Component({
   selector: 'app-question-list',
@@ -33,7 +36,25 @@ import { Component , Input} from '@angular/core';
   ],
 })
 export class QuestionListComponent {
-  questions = ['Question 1', 'Question 2', 'Question 3'];
+  @Output() questionSelected = new EventEmitter<Question>();
+  questions: Question[] = [];
 
+  constructor(private questionService: QuestionServiceService) { }
+
+  ngOnInit(): void {
+    this.questionService.getQuestions().subscribe(
+      (data) => {
+        this.questions = data;
+        console.log(data);
+        this.onQuestionSelected(data[0]);
+      },
+      (error) => {
+        console.error('Error in fetching question:', error);
+      }
+    );
+  }
+  onQuestionSelected(question: Question): void {    
+    this.questionSelected.emit(question);
+  }
 }
 
